@@ -106,7 +106,8 @@ export default function Home() {
     } else {
       setLoadingContribute(true);
       let result = await feLibValut.contribute(signer, amount);
-      if (result === "Successful approved!") {
+      if (result === "Successful deposit!") {
+        getUserBalanceFunction();
         setDisplayApprove(false);
       }
       setLoadingContribute(false);

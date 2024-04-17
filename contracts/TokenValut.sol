@@ -14,17 +14,17 @@ contract TokenVault {
 
     // Deposit tokens into the contract
     function deposit(uint256 _amount) external {
-        require(_amount > 0, "Amount must be greater than 0");
-        require(token.transferFrom(msg.sender, address(this), _amount), "Transfer failed");
+        require(_amount > 0, "Valut: Amount must be greater than 0");
+        require(token.transferFrom(msg.sender, address(this), _amount), "Valut: Transfer failed");
         balances[msg.sender] += _amount;
     }
 
     // Withdraw tokens from the contract
     function withdraw(uint256 _amount) external {
-        require(_amount > 0, "Amount must be greater than 0");
-        require(balances[msg.sender] >= _amount, "Insufficient balance");
+        require(_amount > 0, "Valut: Amount must be greater than 0");
+        require(balances[msg.sender] >= _amount, "Valut: Insufficient balance");
         balances[msg.sender] -= _amount;
-        require(token.transfer(msg.sender, _amount), "Transfer failed");
+        require(token.transfer(msg.sender, _amount), "Valut: Transfer failed");
     }
 
     // View function to see the contract's token balance
@@ -32,8 +32,4 @@ contract TokenVault {
         return token.balanceOf(address(this));
     }
 
-    // View function to see a user's token balance in the contract
-    function getUserTokenBalance(address _user) external view returns (uint256) {
-        return balances[_user];
-    }
 }

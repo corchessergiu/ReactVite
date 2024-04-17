@@ -112,7 +112,7 @@ export default function frontLibValut() {
       signer,
       import.meta.env.REACT_APP_VALUT_CONTRACT_ADDRESS
     );
-    let balance = await Valut.getUserTokenBalance(userAddress);
+    let balance = await Valut.balances(userAddress);
     return balance;
   }
 
