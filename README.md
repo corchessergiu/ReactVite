@@ -1,21 +1,22 @@
-# 🌈 Welcome to the Vite + React + Tailwind CSS + RainbowKit Starter!
+# Vite + React + Tailwind CSS + RainbowKit!
 
 ## To install dependencies
 
-`npm install` or `yarn install`
+`npm install` 
 
 ## To run the project locally
 
-`npm run dev` or `yarn dev`
+`npm run dev`
 
-## To deploy to Vercel
+## Run deploy script from root project: 
 
-Download the [Vercel CLI](https://vercel.com/docs/cli) and run `vercel` from the root directory of this repository
+`npx hardhat run scripts/deploy.js --network sepolia`
 
-You can also link your GitHub repository on [Vercel's site](https://vercel.com)
+## Explanations
+Step 1: Replace with your key in the .secrets.json file
+Step 2: Run deploy script using: npx hardhat run scripts/deploy.js --network sepolia
+Step 3: From the console, take the two addresses and modify them in the .env
 
-### 🟢 A live version of the deployment is available [here](https://rainbowkit.me/)
+## ** ## 
 
-## To deploy to [Fleek](https://fleek.co/) on IPFS
-
-☝️ Coming soon
+From the current implementation of the ERC20 contract, the one who does the deploy will receive the totalSupply.
