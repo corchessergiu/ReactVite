@@ -2,19 +2,51 @@ import ERC20 from "../interfaces/QERC20Interfaces";
 import { ethers } from "ethers";
 
 export default function frontendLibQERC20() {
-
-  async function getERC20Balance(signer, userAddress) {
-    console.log("from library!!!")
-    console.log(userAddress)
-    console.log(signer)
-    const QERC20 = ERC20(signer, "0x85ED9F3BC57586cE095CC7dfCA8cA503027A83E9");
-    const balance = await QERC20.balanceOf(userAddress);
-    console.log("balaces")
-    console.log(balance)
+async function approve(signer, amountToStake) {
+  const ERC20Contract = ERC20(signer, import.meta.env.REACT_APP_ERC20_CONTRACT_ADDRES);
+  let returnedMessage;
+  try {
+    let txApprove = await ERC20Contract.approve(
+      import.meta.env.REACT_APP_VALUT_CONTRACT_ADDRESS,
+      ethers.utils.parseEther(amountToStake.toString())
+    );
+    await txApprove
+      .wait()
+      .then(() => {
+        returnedMessage = "Successful approved!";
+        return returnedMessage;
+      })
+      .catch((error) => {
+        returnedMessage = error;
+        return returnedMessage;
+      });
+  } catch (error) {
+    returnedMessage = "User rejected transaction!";
+    return returnedMessage;
   }
+  return returnedMessage;
+}
 
-  
-  return {
-    getERC20Balance,
-  };
+async function getERC20Balance(signer, userAddress) {
+  const QERC20 = ERC20(signer, import.meta.env.REACT_APP_ERC20_CONTRACT_ADDRES);
+  const balance = await QERC20.balanceOf(userAddress);
+  return ethers.utils.formatEther(balance);
+}
+
+async function getCurrentAllowance(signer, userAddress) {
+  const ERC20Contract = ERC20(signer, import.meta.env.REACT_APP_ERC20_CONTRACT_ADDRES);
+  const allowance = await ERC20Contract.allowance(
+    userAddress,
+    import.meta.env.REACT_APP_VALUT_CONTRACT_ADDRESS
+  );
+
+  return allowance;
+}
+
+
+return {
+  approve,
+  getERC20Balance,
+  getCurrentAllowance,
+};
 }

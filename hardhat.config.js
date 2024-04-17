@@ -23,8 +23,8 @@ module.exports = {
       allowUnlimitedContractSize: true,
       timeout: 1800000,
     },
-    sepoliaTestnet: {
-      url: "https://sepolia.gateway.tenderly.co",
+    sepolia: {
+      url: "https://1rpc.io/sepolia",
       chainId: 11155111,
       accounts: { mnemonic: mnemonic },
       gas: 19000000,

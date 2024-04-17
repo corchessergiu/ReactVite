@@ -1,6 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import Github from "./Components/github";
-import Twitter from "./Components/twitter";
+import Home from "./Components/Home";
 
 function App() {
   return (
@@ -10,7 +9,7 @@ function App() {
           <ConnectButton showBalance={false} />
         </div>
         <div className="flex flex-col pt-10">
-          <Twitter />
+          <Home />
         </div>
       </div>
     </div>
