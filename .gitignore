@@ -30,6 +30,8 @@ cache/
 build/
 interface/build/
 
+.secrets.json
+
 idsPerCycle/
 metadata/
 metadata-unreveal/
