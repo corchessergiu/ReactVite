@@ -12,6 +12,8 @@
 
 `npx hardhat coverage`
 
+![Screenshot from 2024-04-17 23-01-47](https://github.com/corchessergiu/ReactVite/assets/61419684/144c9e94-ab73-47dc-bb84-19e74ba41b63)
+
 ## To run the project locally
 
 `npm run dev`
