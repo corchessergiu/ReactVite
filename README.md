@@ -21,9 +21,9 @@
 `npx hardhat run scripts/deploy.js --network sepolia`
 
 ## Explanations
-Step 1: Replace with your key in the .secrets.json file
-Step 2: Run deploy script using: npx hardhat run scripts/deploy.js --network sepolia
-Step 3: From the console, take the two addresses and modify them in the .env
+## Step 1: Replace with your key in the .secrets.json file
+## Step 2: Run deploy script using: npx hardhat run scripts/deploy.js --network sepolia
+## Step 3: From the console, take the two addresses and modify them in the .env
 
 ## *****  
 
