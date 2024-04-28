@@ -71,7 +71,7 @@ export default function frontLibValut() {
       await txDeposit
         .wait()
         .then(() => {
-          returnedMessage = "Successful deposit!";
+          returnedMessage = "Successful withdraw!";
           return returnedMessage;
         })
         .catch((error) => {

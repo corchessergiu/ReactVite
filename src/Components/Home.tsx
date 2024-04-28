@@ -71,7 +71,7 @@ export default function Home() {
   }
 
   async function setWithdrawState() {
-    let currentBalance = await feLibValut.getUserBalance(
+    let currentBalance = await feLibValut.getUserContribution(
       signer,
       currentAddress
     );
@@ -126,7 +126,8 @@ export default function Home() {
   };
 
   const handleWithdraw = async () => {
-    let currentBalance = await feLibValut.getUserBalance(
+    setLoadingWithdraw(true);
+    let currentBalance = await feLibValut.getUserContribution(
       signer,
       currentAddress
     );
@@ -136,19 +137,20 @@ export default function Home() {
       setCurrentBalance(ethers.utils.formatEther(currentBalance.toString()));
       setdisplayWithdrawText(true);
     } else {
+      setLoadingWithdraw(true);
       setdisplayWithdrawText(false);
-      setLoadingContribute(false);
-      let result = await feLibValut.contribute(signer, amountWithdraw);
-      if (result === "Successful approved!") {
+      let result = await feLibValut.withdraw(signer, amountWithdraw);
+      if (result === "Successful withdraw!") {
+        getUserBalanceFunction();
         setDisplayApprove(false);
       }
-      setLoadingContribute(false);
+      setLoadingWithdraw(false);
     }
   };
   return (
     <div className="flex flex-col justify-center items-center gap-4">
       <div>
-        <span> Your current contribution :  {currentUserContribution} </span>
+        <span> Your current contribution : {currentUserContribution} </span>
       </div>
       <div className="flex justify-center items-center gap-4">
         <div>
